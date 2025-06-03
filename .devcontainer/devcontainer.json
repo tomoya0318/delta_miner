@@ -1,0 +1,39 @@
+{
+  "name": "Delta Miner",
+  "dockerComposeFile": [
+    "../docker-compose.yml" // docker-compose.ymlファイルへの相対パス
+  ],
+  "service": "app", // docker-compose.yml で定義されているサービス名
+  "workspaceFolder": "/works", // コンテナ内でVS Codeが開くワークスペースのパス
+  "shutdownAction": "stopCompose", // VS Codeを閉じたときにdocker-composeを停止する
+
+  // Git関連の設定
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/${localEnv:USERNAME}/.gitconfig,type=bind,consistency=cached"
+  ],
+  // VS Codeの設定（コンテナ内）
+  "customizations": {
+    "vscode": {
+      // 推奨する拡張機能（Python, Node.js, Dockerなど）
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+        // その他プロジェクトに必要な拡張機能を追加
+      ],
+      "settings": {
+        // Pythonインタープリタのパス（コンテナ内の.venvを指すようにする）
+        "python.defaultInterpreterPath": "/works/.venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        // ターミナル設定
+        "terminal.integrated.defaultProfile.linux": "bash", // デフォルトシェル
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "args": ["-l"] // ログインシェルとして起動
+          }
+        }
+      }
+    }
+  },
+  "remoteUser": "${localEnv:USERNAME}"
+}
