@@ -13,6 +13,6 @@ services:
     volumes:
       - type: bind
         source: ./
-        target: /works
-      - /works/node_modules
-      - /works/.venv
+        target: /home/${USERNAME}/works
+      - /home/${USERNAME}/works/node_modules
+      - /home/${USERNAME}/works/.venv

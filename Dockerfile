@@ -82,11 +82,12 @@ RUN (getent group ${GROUPNAME} || groupadd -g ${GID} ${GROUPNAME}) && \
 # ユーザーを切り替え
 USER ${USERNAME}
 # ユーザー切り替え後の作業ディレクトリ
-ENV WORK_DIR=/works
+ENV WORK_DIR=/home/${USERNAME}/works
 WORKDIR ${WORK_DIR}
 
 COPY --chown=${USERNAME}:${GROUPNAME} pyproject.toml uv.lock ./
 COPY --chown=${USERNAME}:${GROUPNAME} package.json package-lock.json ./
+
 # python3.13の環境を整備
 RUN uv python install 3.13
 

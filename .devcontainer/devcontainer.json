@@ -4,7 +4,7 @@
     "../docker-compose.yml" // docker-compose.ymlファイルへの相対パス
   ],
   "service": "app", // docker-compose.yml で定義されているサービス名
-  "workspaceFolder": "/works", // コンテナ内でVS Codeが開くワークスペースのパス
+  "workspaceFolder": "/home/${localEnv:USERNAME}/works", // コンテナ内でVS Codeが開くワークスペースのパス
   "shutdownAction": "stopCompose", // VS Codeを閉じたときにdocker-composeを停止する
 
   // Git関連の設定
