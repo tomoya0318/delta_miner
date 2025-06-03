@@ -1,0 +1,15 @@
+.dockerignore
+README.md
+Dockerfile
+.venv/
+node_modules/
+data/
+output/
+.python-version/
+.tool-versions/
+__pycache__/
+.vscode/
+.env
+*..egg-info
+*.pyc
+.DS_Store

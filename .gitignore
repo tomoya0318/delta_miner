@@ -5,3 +5,4 @@ sample
 data
 packages
 .env
+*.egg-info/

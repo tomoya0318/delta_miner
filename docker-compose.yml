@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+        USERNAME: ${USERNAME}
+        GROUPNAME: ${GROUPNAME}
+    container_name: delta_miner
+    tty: true
+    volumes:
+      - type: bind
+        source: ./
+        target: /works
+      - /works/node_modules
+      - /works/.venv
